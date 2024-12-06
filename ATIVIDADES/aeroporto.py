@@ -4,6 +4,7 @@ from opcoes_aeroporto.funcoes_clientes import cadastro_cliente, atualizar_cadast
 from opcoes_aeroporto.funcoes_passagens import adicionar_passagens
 
 
+
 conn = sqlite3.connect("C:/Repositorios/Banco_de_Dados/ATIVIDADES/empresa_aerea.db")
 
 cursor = conn.cursor()

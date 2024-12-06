@@ -20,3 +20,22 @@ def adicionar_passagens():
 
     conn.commit()
     conn.close()
+    
+    
+def atualizar_passagem():
+
+    conn = sqlite3.connect("C:/Repositorios/Banco_de_Dados/ATIVIDADES/empresa_aerea.db")
+    cursor = conn.cursor()
+
+    
+    nome_cliente = input("Digite o nome do cliente: ")
+    nova_idade = int(input("Digite a nova idade: "))
+
+    
+    cursor.execute("UPDATE clientes_cadastrados SET idade = ? WHERE nome = ?",
+                (nova_idade, nome_cliente))
+
+    
+    conn.commit()
+    print("Dados atualizados com sucesso!")
+    conn.close()
