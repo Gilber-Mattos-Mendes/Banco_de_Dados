@@ -1,7 +1,7 @@
 import sqlite3
 import os
 from opcoes_aeroporto.funcoes_clientes import cadastro_cliente, atualizar_cadastro, exibir_clientes, excluir_cadastro
-from opcoes_aeroporto.funcoes_passagens import adicionar_passagens
+from opcoes_aeroporto.funcoes_passagens import adicionar_passagens, excluir_passagem, atualizar_passagem, exibir_passagens
 
 
 
@@ -73,20 +73,21 @@ while True:
         if escolha_passagem == 1:
             
             adicionar_passagens()
+            print('Passagem cadastrada com sucesso!')
 
             
         elif escolha_passagem == 2:
 
-            pass
+            atualizar_passagem()
                    
 
         elif escolha_passagem == 3:
 
-            pass
+            exibir_passagens()
 
         elif escolha_passagem == 4:
 
-            pass
+            excluir_passagem()
 
 
 

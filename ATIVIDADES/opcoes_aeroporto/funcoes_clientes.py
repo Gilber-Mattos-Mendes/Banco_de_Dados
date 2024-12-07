@@ -26,18 +26,21 @@ def atualizar_cadastro():
 
     conn = sqlite3.connect("C:/Repositorios/Banco_de_Dados/ATIVIDADES/empresa_aerea.db")
     cursor = conn.cursor()
-
     
-    nome_cliente = input("Digite o nome do cliente: ")
-    nova_idade = int(input("Digite a nova idade: "))
-
     
-    cursor.execute("UPDATE clientes_cadastrados SET idade = ? WHERE nome = ?",
-                (nova_idade, nome_cliente))
-
+    id_cliente = int(input('Digite o ID do cliente que deseja Atualizar: '))
+    nome = input('Digite o novo nome: ')
+    idade = input('Digite a nova idade: ')
+    
+    cursor.execute("""
+        UPDATE clientes 
+        SET nome = ?, idade = ?
+        WHERE id_cliente = ?
+    """, (nome, idade, id_cliente))
+    
+    print('Cadastro atualizado com sucesso!')
     
     conn.commit()
-    print("Dados atualizados com sucesso!")
     conn.close()
 
 
