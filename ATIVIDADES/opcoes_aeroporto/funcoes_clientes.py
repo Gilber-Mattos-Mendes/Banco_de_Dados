@@ -33,11 +33,19 @@ def atualizar_cadastro():
     idade = input('Digite a nova idade: ')
     
     cursor.execute("""
+<<<<<<< HEAD
         UPDATE clientes_cadastrados 
+=======
+        UPDATE clientes 
+>>>>>>> 1a5217f6b3f0e81f4f06ef33e310390bb06ba5c6
         SET nome = ?, idade = ?
         WHERE id_cliente = ?
     """, (nome, idade, id_cliente))
     
+<<<<<<< HEAD
+=======
+    print('Cadastro atualizado com sucesso!')
+>>>>>>> 1a5217f6b3f0e81f4f06ef33e310390bb06ba5c6
     
     conn.commit()
     conn.close()

@@ -111,6 +111,7 @@ while True:
         if escolha_passagem == 1:
             
             adicionar_passagens()
+<<<<<<< HEAD
             
             concluido = input('Passagem Adicionada com sucesso! Digite (S)sair (R)retomar:')
 
@@ -120,11 +121,15 @@ while True:
 
             else:
                 continue
+=======
+            print('Passagem cadastrada com sucesso!')
+>>>>>>> 1a5217f6b3f0e81f4f06ef33e310390bb06ba5c6
 
             
         elif escolha_passagem == 2:
 
             atualizar_passagem()
+<<<<<<< HEAD
 
             concluido = input('Passagem atualizada com sucesso! Digite (S)sair (R)retomar:')
 
@@ -134,11 +139,14 @@ while True:
 
             else:
                 continue
+=======
+>>>>>>> 1a5217f6b3f0e81f4f06ef33e310390bb06ba5c6
                    
 
         elif escolha_passagem == 3:
 
             exibir_passagens()
+<<<<<<< HEAD
 
             concluido = input('Excluído com sucesso! Digite (S)sair (R)retomar:')
 
@@ -150,6 +158,8 @@ while True:
                 continue
            
 
+=======
+>>>>>>> 1a5217f6b3f0e81f4f06ef33e310390bb06ba5c6
 
         elif escolha_passagem == 4:
 
