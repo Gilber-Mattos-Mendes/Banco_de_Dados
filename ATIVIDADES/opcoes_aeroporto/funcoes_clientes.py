@@ -26,18 +26,20 @@ def atualizar_cadastro():
 
     conn = sqlite3.connect("C:/Repositorios/Banco_de_Dados/ATIVIDADES/empresa_aerea.db")
     cursor = conn.cursor()
-
     
-    nome_cliente = input("Digite o nome do cliente: ")
-    nova_idade = int(input("Digite a nova idade: "))
-
     
-    cursor.execute("UPDATE clientes_cadastrados SET idade = ? WHERE nome = ?",
-                (nova_idade, nome_cliente))
-
+    id_cliente = int(input('Digite o ID do cliente que deseja Atualizar: '))
+    nome = input('Digite o novo nome: ')
+    idade = input('Digite a nova idade: ')
+    
+    cursor.execute("""
+        UPDATE clientes_cadastrados 
+        SET nome = ?, idade = ?
+        WHERE id_cliente = ?
+    """, (nome, idade, id_cliente))
+    
     
     conn.commit()
-    print("Dados atualizados com sucesso!")
     conn.close()
 
 
@@ -49,7 +51,6 @@ def exibir_clientes():
     cursor.execute("SELECT * FROM clientes_cadastrados")
     resultados = cursor.fetchall()
 
-    os.system('cls')
 
     # Cria a tabela Prettytable e define os nomes das colunas
     tabela = PrettyTable()
@@ -80,7 +81,6 @@ def excluir_cadastro():
     cursor.execute('DELETE FROM clientes_cadastrados WHERE nome = ?', (nome_cliente,))
     conn.commit()
 
-    print('Cliente deletado com sucesso!')
 
     # Fecha a conexão
     conn.close()

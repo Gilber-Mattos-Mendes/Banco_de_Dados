@@ -1,7 +1,9 @@
+
 import sqlite3
 import os
 from opcoes_aeroporto.funcoes_clientes import cadastro_cliente, atualizar_cadastro, exibir_clientes, excluir_cadastro
-from opcoes_aeroporto.funcoes_passagens import adicionar_passagens
+from opcoes_aeroporto.funcoes_passagens import adicionar_passagens, excluir_passagem, atualizar_passagem, exibir_passagens
+
 
 
 conn = sqlite3.connect("C:/Repositorios/Banco_de_Dados/ATIVIDADES/empresa_aerea.db")
@@ -41,21 +43,58 @@ while True:
         if escolha_cliente == 1:
             
             cadastro_cliente()
-            print('Cliente Cadastrado!')
+
+            concluido = input('Cadastro Realizado com sucesso! Digite (S)sair (R)retomar:')
+
+            if concluido == 's':
+                
+                break
+
+            else:
+                continue
 
             
         elif escolha_cliente == 2:
 
             atualizar_cadastro()
+            concluido = input('Dados Atualizados com sucesso! Digite (S)sair (R)retomar:')
+
+            if concluido == 's':
+                
+                break
+
+            else:
+                continue
                    
 
         elif escolha_cliente == 3:
 
             exibir_clientes()
 
+            concluido = input('Excluído com sucesso! Digite (S)sair (R)retomar:')
+
+            if concluido == 's':
+                
+                break
+
+            else:
+                continue
+
+            
+
         elif escolha_cliente == 4:
 
             excluir_cadastro()
+
+            concluido = input('Excluído com sucesso! Digite (S)sair (R)retomar:')
+
+            if concluido == 's':
+                
+                break
+
+            else:
+                continue
+
 
     elif escolha == 2:
 
@@ -72,22 +111,58 @@ while True:
         if escolha_passagem == 1:
             
             adicionar_passagens()
+            
+            concluido = input('Passagem Adicionada com sucesso! Digite (S)sair (R)retomar:')
+
+            if concluido == 's':
+                
+                break
+
+            else:
+                continue
 
             
         elif escolha_passagem == 2:
 
-            pass
+            atualizar_passagem()
+
+            concluido = input('Passagem atualizada com sucesso! Digite (S)sair (R)retomar:')
+
+            if concluido == 's':
+                
+                break
+
+            else:
+                continue
                    
 
         elif escolha_passagem == 3:
 
-            pass
+            exibir_passagens()
+
+            concluido = input('Excluído com sucesso! Digite (S)sair (R)retomar:')
+
+            if concluido == 's':
+                
+                break
+
+            else:
+                continue
+           
+
 
         elif escolha_passagem == 4:
 
-            pass
+            excluir_passagem()
 
+            concluido = input('Excluído com sucesso! Digite (S)sair (R)retomar:')
 
+            if concluido == 's':
+                
+                break
+
+            else:
+                continue
 
 
     conn.commit()
