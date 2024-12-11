@@ -4,15 +4,28 @@ from prettytable import PrettyTable
  
 
 
+RED = "\033[31m"
+GREEN = "\033[32m"
+YELLOW = "\033[33m"
+BLUE = "\033[34m"
+CIAN = "\033[36m"
+MAGENTA = "\033[35m"
+RESET = "\033[0m"
+BOLD = "\033[1m"
+UNDERLINE = "\033[4m"
+RESET = "\033[0m"
+
+
+
 def adicionar_passagens():
 
     conn = sqlite3.connect("C:/Repositorios/Banco_de_Dados/ATIVIDADES/empresa_aerea.db")
     cursor = conn.cursor()
 
-    numero_voo = int(input('Digite o número do Voo: '))
-    destino = input('Destino: ')
-    preco_viagem = float(input('Preço da viagem: '))
-    data = input('Data da viagem: ')
+    numero_voo = int(input(F'{CIAN}\t\t\tDigite o número do Voo: {RESET}'))
+    destino = input(F'{CIAN}\t\t\tDestino: {RESET}')
+    preco_viagem = float(input(F'{CIAN}\t\t\tPreço da viagem: {RESET}'))
+    data = input(F'{CIAN}\t\t\tData da viagem: {RESET}')
 
     cursor.execute('''
     INSERT INTO dados_viagem (numero_voo, destino, preco_viagem, data)
@@ -31,27 +44,22 @@ def atualizar_passagem():
     cursor = conn.cursor()
     
     
-    id_viagem = int(input('Digite o ID da passagem que deseja Excluir: '))
-    numero_voo = input('Digite o número do Vôo. ')
-    destino = input('Digite o Destino: ')
-    preco_viagem = float(input('Digite o valor da passagem: '))
-<<<<<<< HEAD
-    data = input('Data e Hora (DD/MM/AAAA 00:00): ')
-=======
-    data = input('Data e Hora (AAAA/MM/DD 12:35): ')
->>>>>>> 1a5217f6b3f0e81f4f06ef33e310390bb06ba5c6
+    id_viagem = int(input(F'{CIAN}\t\t\tDigite o ID da passagem que deseja Excluir: {RESET}'))
+    numero_voo = input(F'{CIAN}\t\t\tDigite o número do Vôo. {RESET}')
+    destino = input(F'{CIAN}\t\t\tDigite o Destino: {RESET}')
+    preco_viagem = float(input(F'{CIAN}\t\t\tDigite o valor da passagem: {RESET}'))
+    data = input(F'{CIAN}\t\t\tData e Hora (DD/MM/AAAA 00:00): {RESET}')
+
     
     cursor.execute("""
         UPDATE dados_viagem 
         SET numero_voo = ?, destino = ?, preco_viagem = ?, data = ?
         WHERE id_viagem = ?
     """, (numero_voo, destino, preco_viagem, data, id_viagem))
-<<<<<<< HEAD
 
-=======
     
-    print('Passagem atualizada com sucesso!')
->>>>>>> 1a5217f6b3f0e81f4f06ef33e310390bb06ba5c6
+    print(F'{CIAN}\t\t\tPassagem atualizada com sucesso! {RESET}')
+
     
     conn.commit()
     conn.close()
@@ -63,13 +71,12 @@ def excluir_passagem():
     conn = sqlite3.connect("C:/Repositorios/Banco_de_Dados/ATIVIDADES/empresa_aerea.db")
     cursor = conn.cursor()
     
-    id_cliente = input('Digite o id do titular da passagem: ')
+    id_cliente = input(F'{CIAN}\t\t\tDigite o id do titular da passagem: {RESET}')
     cursor.execute("DELETE FROM dados_viagem WHERE id_viagem = ?", (id_cliente,))
     
-<<<<<<< HEAD
-=======
-    print('Passagem deletada com sucesso!')
->>>>>>> 1a5217f6b3f0e81f4f06ef33e310390bb06ba5c6
+
+    print(F'{CIAN}\t\t\tPassagem deletada com sucesso! {RESET}')
+
     
     conn.commit()
     conn.close()

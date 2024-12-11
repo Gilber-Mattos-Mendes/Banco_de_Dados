@@ -4,13 +4,26 @@ from prettytable import PrettyTable
 
 
 
+RED = "\033[31m"
+GREEN = "\033[32m"
+YELLOW = "\033[33m"
+BLUE = "\033[34m"
+CIAN = "\033[36m"
+MAGENTA = "\033[35m"
+RESET = "\033[0m"
+BOLD = "\033[1m"
+UNDERLINE = "\033[4m"
+RESET = "\033[0m"
+
+
+
 def cadastro_cliente():
 
     conn = sqlite3.connect("C:/Repositorios/Banco_de_Dados/ATIVIDADES/empresa_aerea.db")
     cursor = conn.cursor()
 
-    nome = input('Digite seu Nome: ')
-    idade = int(input('Digite a sua idade: '))
+    nome = input(F'{CIAN}\t\t\tDigite seu Nome: {RESET}')
+    idade = int(input(F'{CIAN}\t\t\tDigite a sua idade: {RESET}'))
 
                 
 
@@ -28,24 +41,18 @@ def atualizar_cadastro():
     cursor = conn.cursor()
     
     
-    id_cliente = int(input('Digite o ID do cliente que deseja Atualizar: '))
-    nome = input('Digite o novo nome: ')
-    idade = input('Digite a nova idade: ')
+    id_cliente = int(input(F'{CIAN}\t\t\tDigite o ID do cliente que deseja Atualizar: {RESET}'))
+    nome = input(F'{CIAN}\t\t\tDigite o novo nome: {RESET}')
+    idade = input(F'{CIAN}\t\t\tDigite a nova idade: {RESET}')
     
-    cursor.execute("""
-<<<<<<< HEAD
-        UPDATE clientes_cadastrados 
-=======
-        UPDATE clientes 
->>>>>>> 1a5217f6b3f0e81f4f06ef33e310390bb06ba5c6
+    cursor.execute(""" UPDATE clientes_cadastrados
         SET nome = ?, idade = ?
         WHERE id_cliente = ?
     """, (nome, idade, id_cliente))
     
-<<<<<<< HEAD
-=======
-    print('Cadastro atualizado com sucesso!')
->>>>>>> 1a5217f6b3f0e81f4f06ef33e310390bb06ba5c6
+
+    print(F'{CIAN}\t\t\tCadastro atualizado com sucesso! {RESET}')
+
     
     conn.commit()
     conn.close()
@@ -83,10 +90,10 @@ def excluir_cadastro():
 
     os.system('cls')
 
-    nome_cliente = input('Digite o nome do cliente para excluir: ')
+    id_cliente = input(F'{CIAN}\t\t\tDigite o ID do cliente para excluir: {RESET}')
 
     # Executa a exclusão com base no nome fornecido pelo usuário
-    cursor.execute('DELETE FROM clientes_cadastrados WHERE nome = ?', (nome_cliente,))
+    cursor.execute('DELETE FROM clientes_cadastrados WHERE id_cliente = ?', (id_cliente,))
     conn.commit()
 
 

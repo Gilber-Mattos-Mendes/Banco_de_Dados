@@ -1,4 +1,4 @@
-
+#===================================================================== IMPORTANDO BIBLIOTECAS E MÓDULOS ========================================================================
 import sqlite3
 import os
 from opcoes_aeroporto.funcoes_clientes import cadastro_cliente, atualizar_cadastro, exibir_clientes, excluir_cadastro
@@ -6,10 +6,25 @@ from opcoes_aeroporto.funcoes_passagens import adicionar_passagens, excluir_pass
 
 
 
-conn = sqlite3.connect("C:/Repositorios/Banco_de_Dados/ATIVIDADES/empresa_aerea.db")
+#========================================================================= MUDANDO VISUAL ====================================================================================
+RED = "\033[31m"
+GREEN = "\033[32m"
+YELLOW = "\033[33m"
+BLUE = "\033[34m"
+CIAN = "\033[36m"
+MAGENTA = "\033[35m"
+RESET = "\033[0m"
+BOLD = "\033[1m"
+UNDERLINE = "\033[4m"
+RESET = "\033[0m"
 
+
+#===================================================================== INICIALIZANDO O BANCO ==================================================================================
+
+conn = sqlite3.connect("C:/Repositorios/Banco_de_Dados/ATIVIDADES/empresa_aerea.db")
 cursor = conn.cursor()
 
+#======================================================================== MENU ===============================================================================================
 
 while True:
 
@@ -18,33 +33,42 @@ while True:
     cursor = conn.cursor()
 
     
-    print('-' *70)
-    print("COMPANHIA AÉREA: ")
-    print('-' *70)
+    print(F'{BOLD}{GREEN}-{RESET}' *70)
+    print(f"{BOLD}{GREEN}\t\t\tCOMPANHIA AÉREA: {RESET}")
+    print(F'{BOLD}{GREEN}-{RESET}' *70)
 
-    print('1- Acessar Área Cliente\n'
-          '2- Acessar Área Passagens')
+    print(F'{BOLD}{CIAN}\t\t\t1- Acessar Área Cliente\n'
+          '\t\t\t2- Acessar Área Passagens\n'
+          '\t\t\t3- Sair ')
     print()
+    print(F'{BOLD}{GREEN}-{RESET}' *70)
 
-    escolha = int(input('Digite o número da opção escolhida: '))
+    escolha = int(input(f'{BOLD}{GREEN}\t\t\tDigite o número da opção escolhida: {RESET}'))
 
+
+#==================================================================== SUB MENU CLIENTE ======================================================================================
+    
     if escolha == 1:
 
         os.system('cls')
 
-        print('1- Cadastrar Cliente\n'
-              '2- Atualizar Dados\n'
-              '3- Exibir Dados\n'
-              '4- Excluir Dados')
+        print(F'{BOLD}{GREEN}-{RESET}' *70)
+        print(F'{CIAN}\t\t\t1- Cadastrar Cliente\n'
+              '\t\t\t2- Atualizar Dados\n'
+              '\t\t\t3- Exibir Dados\n'
+              '\t\t\t4- Excluir Dados\n'
+              '\t\t\t5- Voltar {RESET}')
         print()
+        print(F'{BOLD}{GREEN}-{RESET}' *70)
 
-        escolha_cliente = int(input('Digite o número da opção escolhida: '))
+        escolha_cliente = int(input(f'{BOLD}{GREEN}\t\t\tDigite o número da opção escolhida: {RESET}'))
 
         if escolha_cliente == 1:
             
             cadastro_cliente()
 
-            concluido = input('Cadastro Realizado com sucesso! Digite (S)sair (R)retomar:')
+            print(F'{BOLD}{GREEN}-{RESET}' *70)
+            concluido = input(F'{BOLD}{CIAN}\t\t\tCadastro Realizado com sucesso! Digite (S)sair (R)retomar: {RESET}').lower()
 
             if concluido == 's':
                 
@@ -57,7 +81,9 @@ while True:
         elif escolha_cliente == 2:
 
             atualizar_cadastro()
-            concluido = input('Dados Atualizados com sucesso! Digite (S)sair (R)retomar:')
+
+            print(F'{BOLD}{GREEN}-{RESET}' *70)
+            concluido = input(F'{BOLD}{CIAN}\t\t\tDados Atualizados com sucesso! Digite (S)sair (R)retomar: {RESET}').lower()
 
             if concluido == 's':
                 
@@ -71,7 +97,8 @@ while True:
 
             exibir_clientes()
 
-            concluido = input('Excluído com sucesso! Digite (S)sair (R)retomar:')
+            print(F'{BOLD}{GREEN}-{RESET}' *70)
+            concluido = input(F'{BOLD}{CIAN}\t\t\tExcluído com sucesso! Digite (S)sair (R)retomar: {RESET}').lower()
 
             if concluido == 's':
                 
@@ -86,7 +113,9 @@ while True:
 
             excluir_cadastro()
 
-            concluido = input('Excluído com sucesso! Digite (S)sair (R)retomar:')
+            print(F'{BOLD}{GREEN}-{RESET}' *70)
+            concluido = input(F'{BOLD}{RED}\t\t\tExcluído com sucesso! Digite (S)sair (R)retomar: {RESET}').lower()
+            print(F'{BOLD}{GREEN}-{RESET}' *70)
 
             if concluido == 's':
                 
@@ -95,25 +124,49 @@ while True:
             else:
                 continue
 
+        
+        elif escolha_cliente == 5:
+
+            continue
+
+        else:
+            invalido = input(F'{BOLD}{CIAN}\t\t\tOpção inválida!\n'
+                  '\t\t\tDeseja retornar? (s/n): {RESET}')
+            print(F'{BOLD}{GREEN}-{RESET}' *70)
+            
+            if invalido == 's':
+                continue
+
+            else:
+                print(F'{BOLD}{GREEN}-{RESET}' *70)
+                print(F'{BOLD}{CIAN}\t\t\tfinalizando... {RESET}')
+                print(F'{BOLD}{GREEN}-{RESET}' *70)
+                break
+
+
+#======================================================================= SUB MENU PASSAGENS =================================================================================
 
     elif escolha == 2:
 
         os.system('cls')
 
-        print('1- Adicionar Passagem\n'
-              '2- Atualizar Informações\n'
-              '3- Exibir Passagens Cadastradas\n'
-              '4- Excluir Passagem')
+        print(F'{BOLD}{GREEN}-{RESET}' *70)
+        print(F'{CIAN}\t\t\t1- Adicionar Passagem\n'
+              '\t\t\t2- Atualizar Informações\n'
+              '\t\t\t3- Exibir Passagens Cadastradas\n'
+              '\t\t\t4- Excluir Passagem\n'
+              '\t\t\t5- Voltar {RESET}')
         print()
+        print(F'{BOLD}{GREEN}-{RESET}' *70)
 
-        escolha_passagem = int(input('Digite o número da opção escolhida: '))
+        escolha_passagem = int(input(f'{BOLD}{GREEN}\t\t\tDigite o número da opção escolhida: {RESET}'))
 
         if escolha_passagem == 1:
             
             adicionar_passagens()
-<<<<<<< HEAD
-            
-            concluido = input('Passagem Adicionada com sucesso! Digite (S)sair (R)retomar:')
+
+            print(F'{BOLD}{GREEN}-{RESET}' *70)
+            concluido = input(F'{BOLD}{CIAN}\t\t\tPassagem Adicionada com sucesso! Digite (S)sair (R)retomar: {RESET}').lower()
 
             if concluido == 's':
                 
@@ -121,17 +174,15 @@ while True:
 
             else:
                 continue
-=======
-            print('Passagem cadastrada com sucesso!')
->>>>>>> 1a5217f6b3f0e81f4f06ef33e310390bb06ba5c6
+
 
             
         elif escolha_passagem == 2:
 
             atualizar_passagem()
-<<<<<<< HEAD
 
-            concluido = input('Passagem atualizada com sucesso! Digite (S)sair (R)retomar:')
+            print(F'{BOLD}{GREEN}-{RESET}' *70)
+            concluido = input(F'{BOLD}{CIAN}\t\t\tPassagem atualizada com sucesso! Digite (S)sair (R)retomar: {RESET}').lower()
 
             if concluido == 's':
                 
@@ -139,16 +190,16 @@ while True:
 
             else:
                 continue
-=======
->>>>>>> 1a5217f6b3f0e81f4f06ef33e310390bb06ba5c6
+
+
                    
 
         elif escolha_passagem == 3:
 
             exibir_passagens()
-<<<<<<< HEAD
 
-            concluido = input('Excluído com sucesso! Digite (S)sair (R)retomar:')
+            print(F'{BOLD}{GREEN}-{RESET}' *70)
+            concluido = input(F'{BOLD}{CIAN}\t\t\tExcluído com sucesso! Digite (S)sair (R)retomar: {RESET}').lower()
 
             if concluido == 's':
                 
@@ -158,14 +209,12 @@ while True:
                 continue
            
 
-=======
->>>>>>> 1a5217f6b3f0e81f4f06ef33e310390bb06ba5c6
-
         elif escolha_passagem == 4:
 
             excluir_passagem()
 
-            concluido = input('Excluído com sucesso! Digite (S)sair (R)retomar:')
+            print(F'{BOLD}{GREEN}-{RESET}' *70)
+            concluido = input(F'{BOLD}{CIAN}\t\t\tExcluído com sucesso! Digite (S)sair (R)retomar: {RESET}').lower()
 
             if concluido == 's':
                 
@@ -174,6 +223,32 @@ while True:
             else:
                 continue
 
+        
+        elif escolha_passagem == 5:
 
-    conn.commit()
-    conn.close()
+            continue
+
+
+        else:
+            invalido = input(f'{BOLD}{GREEN}\t\t\tOpção inválida!\n'
+                  '\t\t\tDeseja retornar? (s/n): {RESET}')
+            print(F'{BOLD}{GREEN}-{RESET}' *70)
+            
+            if invalido == 's':
+                continue
+
+            else:
+                print(F'{BOLD}{GREEN}-{RESET}' *70)
+                print(F'{BOLD}{CIAN}\t\t\tfinalizando... {RESET}')
+                print(F'{BOLD}{GREEN}-{RESET}' *70)
+                break
+
+    if escolha == 3:
+        print(F'{BOLD}{GREEN}={RESET}' *70)
+        print(F'{BOLD}{CIAN}Até mais... {RESET}')
+        print(F'{BOLD}{GREEN}={RESET}' *70)
+        break
+
+
+conn.commit()
+conn.close()
