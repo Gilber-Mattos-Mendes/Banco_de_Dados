@@ -2,9 +2,9 @@
 import sqlite3
 import os
 from opcoes_aeroporto.funcoes_clientes import cadastro_cliente, atualizar_cadastro, exibir_clientes, excluir_cadastro
-from opcoes_aeroporto.funcoes_passagens import adicionar_passagens, excluir_passagem, atualizar_passagem, exibir_passagens
-
-
+from opcoes_aeroporto.funcoes_passagens import adicionar_passagens, excluir_passagem, atualizar_viagem, exibir_passagens
+from opcoes_aeroporto.funcoes_bagagens import exibir_bagagens, adicionar_bagagens
+from opcoes_aeroporto.funcoes_join import consultar_pedidos
 
 #========================================================================= MUDANDO VISUAL ====================================================================================
 RED = "\033[31m"
@@ -21,14 +21,14 @@ RESET = "\033[0m"
 
 #===================================================================== INICIALIZANDO O BANCO ==================================================================================
 
-conn = sqlite3.connect("C:/Repositorios/Banco_de_Dados/ATIVIDADES/empresa_aerea.db")
+conn = sqlite3.connect("C:\Python\Banco_de_Dados\ATIVIDADES\empresa_aerea.db")
 cursor = conn.cursor()
 
 #======================================================================== MENU ===============================================================================================
 
 while True:
 
-    conn = sqlite3.connect("C:/Repositorios/Banco_de_Dados/ATIVIDADES/empresa_aerea.db")
+    conn = sqlite3.connect("C:\Python\Banco_de_Dados\ATIVIDADES\empresa_aerea.db")
 
     cursor = conn.cursor()
 
@@ -39,7 +39,9 @@ while True:
 
     print(F'{BOLD}{CIAN}\t\t\t1- Acessar Área Cliente\n'
           '\t\t\t2- Acessar Área Passagens\n'
-          '\t\t\t3- Sair ')
+          '\t\t\t3- Acessar Área Bagagens\n'
+          '\t\t\t4- Pesquisa Personalizada'
+          '\t\t\t5- Sair')
     print()
     print(F'{BOLD}{GREEN}-{RESET}' *70)
 
@@ -179,7 +181,7 @@ while True:
             
         elif escolha_passagem == 2:
 
-            atualizar_passagem()
+            atualizar_viagem()
 
             print(F'{BOLD}{GREEN}-{RESET}' *70)
             concluido = input(F'{BOLD}{CIAN}\t\t\tPassagem atualizada com sucesso! Digite (S)sair (R)retomar: {RESET}').lower()
@@ -243,7 +245,87 @@ while True:
                 print(F'{BOLD}{GREEN}-{RESET}' *70)
                 break
 
+    
+    #======================================================================= SUB MENU BAGAGENS =================================================================================
+    
+    
     if escolha == 3:
+
+        os.system('cls')
+
+        print(F'{BOLD}{GREEN}-{RESET}' *70)
+        print(F'{CIAN}\t\t\t1- exibir Bagagens\n'
+              '\t\t\t2- Cadastrar Bagagem\n'
+              '\t\t\t3- Perdi minha Bagagem {RESET}'
+              '\t\t\t4- Voltar {RESET}')
+        print()
+        print(F'{BOLD}{GREEN}-{RESET}' *70)
+
+        escolha_cliente = int(input(f'{BOLD}{GREEN}\t\t\tDigite o número da opção escolhida: {RESET}'))
+
+        if escolha_cliente == 1:
+            
+            exibir_bagagens()
+
+            print(F'{BOLD}{GREEN}-{RESET}' *70)
+            concluido = input(F'{BOLD}{CIAN}\t\t\tDigite (S)sair (R)retomar: {RESET}').lower()
+
+            if concluido == 's':
+                
+                break
+
+            else:
+                continue
+
+            
+        elif escolha_cliente == 2:  
+            
+            adicionar_bagagens()
+
+            print(F'{BOLD}{GREEN}-{RESET}' *70)
+            concluido = input(F'{BOLD}{CIAN}\t\t\tBagagem adicionada com sucesso! Digite (S)sair (R)retomar: {RESET}').lower()
+
+            if concluido == 's':
+                
+                break
+
+            else:
+                continue
+                   
+
+        elif escolha_cliente == 3:
+
+
+            print(F'{BOLD}{GREEN}-{RESET}' *70)
+            numero = input(F'{BOLD}{CIAN}\t\t\tDigite o número da sua bagagem: {RESET}')
+            nome = input(F'{BOLD}{CIAN}\t\t\tDigite seu nome: {RESET}')
+            voo = input(F'{BOLD}{CIAN}\t\t\tDigite o número do vôo: {RESET}')
+            print(f'{BOLD}{GREEN}Vamos localizar sua bagagem! Entraremos em contato.{RESET}')
+        
+        elif escolha_cliente == 5:
+
+            continue
+
+        else:
+            invalido = input(F'{BOLD}{CIAN}\t\t\tOpção inválida!\n'
+                  '\t\t\tDeseja retornar? (s/n): {RESET}')
+            print(F'{BOLD}{GREEN}-{RESET}' *70)
+            
+            if invalido == 's':
+                continue
+
+            else:
+                print(F'{BOLD}{GREEN}-{RESET}' *70)
+                print(F'{BOLD}{CIAN}\t\t\tfinalizando... {RESET}')
+                print(F'{BOLD}{GREEN}-{RESET}' *70)
+                break
+            
+            
+    if escolha == 4:
+        consultar_pedidos()     
+            
+            
+    if escolha == 5:
         print(F'{BOLD}{GREEN}={RESET}' *70)
         print(F'{BOLD}{CIAN}Até mais... {RESET}')
         print(F'{BOLD}{GREEN}={RESET}' *70)

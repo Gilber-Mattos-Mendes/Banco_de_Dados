@@ -19,7 +19,7 @@ RESET = "\033[0m"
 
 def cadastro_cliente():
 
-    conn = sqlite3.connect("C:/Repositorios/Banco_de_Dados/ATIVIDADES/empresa_aerea.db")
+    conn = sqlite3.connect("C:\Python\Banco_de_Dados\ATIVIDADES\empresa_aerea.db")
     cursor = conn.cursor()
 
     nome = input(F'{CIAN}\t\t\tDigite seu Nome: {RESET}')
@@ -37,7 +37,7 @@ def cadastro_cliente():
 
 def atualizar_cadastro():
 
-    conn = sqlite3.connect("C:/Repositorios/Banco_de_Dados/ATIVIDADES/empresa_aerea.db")
+    conn = sqlite3.connect("C:\Python\Banco_de_Dados\ATIVIDADES\empresa_aerea.db")
     cursor = conn.cursor()
     
     
@@ -60,7 +60,7 @@ def atualizar_cadastro():
 
 def exibir_clientes():
 
-    conn = sqlite3.connect("C:/Repositorios/Banco_de_Dados/ATIVIDADES/empresa_aerea.db")
+    conn = sqlite3.connect("C:\Python\Banco_de_Dados\ATIVIDADES\empresa_aerea.db")
     cursor = conn.cursor()
 
     cursor.execute("SELECT * FROM clientes_cadastrados")
@@ -85,7 +85,7 @@ def exibir_clientes():
 def excluir_cadastro():
 
     
-    conn = sqlite3.connect("C:/Repositorios/Banco_de_Dados/ATIVIDADES/empresa_aerea.db")
+    conn = sqlite3.connect("C:\Python\Banco_de_Dados\ATIVIDADES\empresa_aerea.db")
     cursor = conn.cursor()
 
     os.system('cls')

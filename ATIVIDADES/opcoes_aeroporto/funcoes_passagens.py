@@ -19,7 +19,7 @@ RESET = "\033[0m"
 
 def adicionar_passagens():
 
-    conn = sqlite3.connect("C:/Repositorios/Banco_de_Dados/ATIVIDADES/empresa_aerea.db")
+    conn = sqlite3.connect("C:\Python\Banco_de_Dados\ATIVIDADES\empresa_aerea.db")
     cursor = conn.cursor()
 
     numero_voo = int(input(F'{CIAN}\t\t\tDigite o número do Voo: {RESET}'))
@@ -38,16 +38,16 @@ def adicionar_passagens():
     
     
     
-def atualizar_passagem():
+def atualizar_viagem():
     
-    conn = sqlite3.connect("C:/Repositorios/Banco_de_Dados/ATIVIDADES/empresa_aerea.db")
+    conn = sqlite3.connect("C:\Python\Banco_de_Dados\ATIVIDADES\empresa_aerea.db")
     cursor = conn.cursor()
     
     
-    id_viagem = int(input(F'{CIAN}\t\t\tDigite o ID da passagem que deseja Excluir: {RESET}'))
+    id_viagem = int(input(F'{CIAN}\t\t\tDigite o ID da viagem que deseja Excluir: {RESET}'))
     numero_voo = input(F'{CIAN}\t\t\tDigite o número do Vôo. {RESET}')
     destino = input(F'{CIAN}\t\t\tDigite o Destino: {RESET}')
-    preco_viagem = float(input(F'{CIAN}\t\t\tDigite o valor da passagem: {RESET}'))
+    preco_viagem = float(input(F'{CIAN}\t\t\tDigite o valor da viagem: {RESET}'))
     data = input(F'{CIAN}\t\t\tData e Hora (DD/MM/AAAA 00:00): {RESET}')
 
     
@@ -58,7 +58,7 @@ def atualizar_passagem():
     """, (numero_voo, destino, preco_viagem, data, id_viagem))
 
     
-    print(F'{CIAN}\t\t\tPassagem atualizada com sucesso! {RESET}')
+    print(F'{CIAN}\t\t\tviagem atualizada com sucesso! {RESET}')
 
     
     conn.commit()
@@ -68,7 +68,7 @@ def atualizar_passagem():
     
 def excluir_passagem():
     
-    conn = sqlite3.connect("C:/Repositorios/Banco_de_Dados/ATIVIDADES/empresa_aerea.db")
+    conn = sqlite3.connect("C:\Python\Banco_de_Dados\ATIVIDADES\empresa_aerea.db")
     cursor = conn.cursor()
     
     id_cliente = input(F'{CIAN}\t\t\tDigite o id do titular da passagem: {RESET}')
@@ -84,7 +84,7 @@ def excluir_passagem():
 
 def exibir_passagens():
 
-    conn = sqlite3.connect("C:/Repositorios/Banco_de_Dados/ATIVIDADES/empresa_aerea.db")
+    conn = sqlite3.connect("C:\Python\Banco_de_Dados\ATIVIDADES\empresa_aerea.db")
     cursor = conn.cursor()
 
     cursor.execute("SELECT * FROM dados_viagem")
