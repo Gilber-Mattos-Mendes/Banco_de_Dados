@@ -25,13 +25,13 @@ def adicionar_bagagens():
 
     numero_bagagem = int(input(F'{CIAN}\t\t\tDigite o número da Bagagem: {RESET}'))
     destino = input(F'{CIAN}\t\t\tDestino: {RESET}')
-    peso = float(input(F'{CIAN}\t\t\tPeso da Bagagem: {RESET}'))
+    n_voo = float(input(F'{CIAN}\t\t\tPeso da Bagagem: {RESET}'))
     
 
     cursor.execute('''
-    INSERT INTO bagagens (numero_bagagem, destino, peso)
+    INSERT INTO bagagens (numero_bagagem, destino, numero_voo)
     VALUES (?, ?, ?)
-    ''', (numero_bagagem, destino, peso))
+    ''', (numero_bagagem, destino, n_voo))
 
     conn.commit()
     conn.close()

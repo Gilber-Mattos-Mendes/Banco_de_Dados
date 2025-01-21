@@ -9,8 +9,8 @@ cursor = conn.cursor()
 cursor.execute('''
     CREATE TABLE IF NOT EXISTS dados_viagem (
         id_viagem INTEGER PRIMARY KEY AUTOINCREMENT,
-        id_cliente INTEGER NOT NULL,
-        id_bagagens INTEGER NOT NULL,
+        id_cliente INTEGER,
+        id_bagagens INTEGER,
         numero_voo INTEGER NOT NULL,
         destino TEXT NOT NULL,
         preco_viagem DECIMAL(10, 2),

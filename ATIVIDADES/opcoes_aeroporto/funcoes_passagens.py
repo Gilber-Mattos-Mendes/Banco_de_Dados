@@ -23,14 +23,16 @@ def adicionar_passagens():
     cursor = conn.cursor()
 
     numero_voo = int(input(F'{CIAN}\t\t\tDigite o número do Voo: {RESET}'))
+    id_cliente = int(input('Digite o ID do Cliente: '))
+    id_bagagem = int(input('Digite i ID da Bagagem'))
     destino = input(F'{CIAN}\t\t\tDestino: {RESET}')
     preco_viagem = float(input(F'{CIAN}\t\t\tPreço da viagem: {RESET}'))
     data = input(F'{CIAN}\t\t\tData da viagem: {RESET}')
 
     cursor.execute('''
-    INSERT INTO dados_viagem (numero_voo, destino, preco_viagem, data)
-    VALUES (?, ?, ?, ?)
-    ''', (numero_voo, destino, preco_viagem, data))
+    INSERT INTO dados_viagem (numero_voo, id_cliente, id_bagagens, destino, preco_viagem, data)
+    VALUES (?, ?, ?, ?, ?, ?)
+    ''', (numero_voo, id_cliente, id_bagagem, destino, preco_viagem, data))
 
     conn.commit()
     conn.close()
